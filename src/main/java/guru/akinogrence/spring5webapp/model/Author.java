@@ -8,11 +8,13 @@ import java.util.Set;
 @Entity
 public class Author {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String firstname;
-    private String lastName;
+    private String lastname;
 
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
@@ -22,15 +24,21 @@ public class Author {
 
     public Author(String firstname, String lastName) {
         this.firstname = firstname;
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public Author(String firstname, String lastName, Set<Book> books) {
         this.firstname = firstname;
-        this.lastName = lastName;
+        this.lastname = lastName;
         this.books = books;
     }
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -41,11 +49,11 @@ public class Author {
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public Set<Book> getBooks() {
@@ -75,7 +83,7 @@ public class Author {
         return "Author{" +
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", lastName='" + lastname + '\'' +
                 ", books=" + books +
                 '}';
     }
